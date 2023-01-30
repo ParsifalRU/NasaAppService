@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <fragment
+        android:id="@+id/fragment_picture_of_the_day"
+        android:name="com.example.nasaapp.ui.fragments.fragment.FragmentPictureOfTheDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/fragment_picture_of_the_day" />
+
+        <fragment
+            android:id="@+id/favorite_mars_photo"
+            android:name="com.example.nasaapp.ui.fragments.fragment.FragmentFavoritePhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_picture_of_the_day"
+            tools:layout="@layout/fragment_favorite_photo" />
+
+
+        <fragment
+            android:id="@+id/new_mars_photo"
+            android:name="com.example.nasaapp.ui.fragments.fragment.FragmentNewMarsPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/favorite_mars_photo"
+            tools:layout="@layout/mars_photo_new" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

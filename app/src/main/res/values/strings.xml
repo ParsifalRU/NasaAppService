@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NasaApp</string>
+    <string name="picture_of_the_day">Picture of the day:</string>
+    <string name="favorite_photos">Favorite Photos:</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="new_mars_photo_android_textsize">New Mars Photo:</string>
+    <string name="new_mars_photo">New Mars Photo</string>
+</resources>
