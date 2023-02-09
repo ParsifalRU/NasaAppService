@@ -57,4 +57,10 @@ class FragmentNewMarsPhoto : Fragment() {
 
     }
 
+    fun setButton(){
+        binding.loadBtn.setOnClickListener {
+
+        }
+    }
+
 }

@@ -37,7 +37,7 @@ class NewMarsPhotoAdapter(private val context: Context, private val url: ModelOp
         }
 
         override fun getItemCount(): Int {
-            return 25
+            return 28
         }
 
         private fun setImage(context: Context, url: String, imageView: ImageView){

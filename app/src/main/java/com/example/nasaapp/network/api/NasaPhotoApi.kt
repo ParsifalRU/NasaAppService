@@ -48,7 +48,7 @@ interface NasaPhotoApi {
         sol: Int = 1000,
 
         @Query("earth_date")
-        earthDate: String = "2015-6-3",
+        earthDate: String = /*"2015-6-3"*/ dateText,
 
 /*
         @Query("camera")
