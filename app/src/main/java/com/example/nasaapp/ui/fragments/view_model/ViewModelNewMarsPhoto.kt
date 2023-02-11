@@ -30,7 +30,6 @@ class ViewModelNewMarsPhoto: ViewModel() {
                 override fun onError(e: Throwable) {
                     Log.d("LOGTAG", "ViewModel new Mars Photo $e")
                 }
-
             })
         )
     }
@@ -39,5 +38,11 @@ class ViewModelNewMarsPhoto: ViewModel() {
         compositeDisposable.clear()
         super.onCleared()
     }
+
+
+
+
+
+
 
 }
