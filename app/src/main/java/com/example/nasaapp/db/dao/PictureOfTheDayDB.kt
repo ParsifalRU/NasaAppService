@@ -14,7 +14,7 @@ interface PictureOfTheDayDB {
     fun insertPictures(pictures: List<PictureOfTheDay>)
 
     @Delete
-    fun deletePicture(picture: PictureOfTheDayDB)
+    fun deletePicture(picture: PictureOfTheDay)
 
     @Query("DELETE FROM $TABLE_NAME")
     fun deleteAllPictures()

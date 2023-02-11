@@ -1,20 +1,19 @@
 package com.example.nasaapp.db.repository
 
 import com.example.nasaapp.db.dao.PictureOfTheDayDB
+import com.example.nasaapp.db.model.PictureOfTheDay
 
-class PictureRepository(
-    private val pictureDao: PictureOfTheDayDB,
-) {
+class PictureRepository(private val pictureDao: PictureOfTheDayDB) {
 
-    fun insertPicture(picture: PictureOfTheDayDB){
+    fun insertPicture(picture: PictureOfTheDay){
         pictureDao.insertPicture(picture)
     }
 
-    fun insertPictures(pictures: List<PictureOfTheDayDB>){
+    fun insertPictures(pictures: List<PictureOfTheDay>){
         pictureDao.insertPictures(pictures)
     }
 
-    fun deletePicture(picture: PictureOfTheDayDB){
+    fun deletePicture(picture: PictureOfTheDay){
         pictureDao.deletePicture(picture)
     }
 
@@ -22,11 +21,11 @@ class PictureRepository(
         pictureDao.deleteAllPictures()
     }
 
-    fun getAllPictures(): List<PictureOfTheDayDB>{
+    fun getAllPictures(): List<PictureOfTheDay>{
         return pictureDao.getAllPictures()
     }
 
-    fun getLastPicture(): PictureOfTheDayDB{
+    fun getLastPicture(): PictureOfTheDay{
         return pictureDao.getLastPicture()
     }
 
@@ -34,7 +33,7 @@ class PictureRepository(
         return pictureDao.isPictureExists(explanation)
     }
 
-    fun getPictureOfDay(id: Int): PictureOfTheDayDB{
+    fun getPictureOfDay(id: Int): PictureOfTheDay{
         return pictureDao.getPictureOfDay(id)
     }
 
