@@ -6,35 +6,35 @@ import io.reactivex.rxjava3.core.Flowable
 
 class PictureRepository(private val pictureDao: PictureOfTheDayDB) {
 
-    fun insertPicture(picture: PictureOfTheDay){
-        pictureDao.insertPicture(picture)
+    fun insertPicture(picture: PictureOfTheDay):Flowable<PictureOfTheDay>{
+        return pictureDao.insertPicture(picture)
     }
 
-    fun insertPictures(pictures: List<PictureOfTheDay>){
-        pictureDao.insertPictures(pictures)
+    fun insertPictures(pictures: List<PictureOfTheDay>):Flowable<List<PictureOfTheDay>>{
+        return pictureDao.insertPictures(pictures)
     }
 
-    fun deletePicture(picture: PictureOfTheDay){
-        pictureDao.deletePicture(picture)
+    fun deletePicture(picture: PictureOfTheDay):Flowable<PictureOfTheDay>{
+        return pictureDao.deletePicture(picture)
     }
 
     fun deleteAllPictures(): Flowable<List<PictureOfTheDay>> {
         return pictureDao.deleteAllPictures()
     }
 
-    fun getAllPictures(): List<PictureOfTheDay>{
+    fun getAllPictures(): Flowable<List<PictureOfTheDay>>{
         return pictureDao.getAllPictures()
     }
 
-    fun getLastPicture(): PictureOfTheDay{
+    fun getLastPicture(): Flowable<PictureOfTheDay>{
         return pictureDao.getLastPicture()
     }
 
-    fun isPictureExists(explanation: String): Boolean{
+    fun isPictureExists(explanation: String): Flowable<Boolean>{
         return pictureDao.isPictureExists(explanation)
     }
 
-    fun getPictureOfDay(id: Int): PictureOfTheDay{
+    fun getPictureOfDay(id: Int): Flowable<PictureOfTheDay>{
         return pictureDao.getPictureOfDay(id)
     }
 
