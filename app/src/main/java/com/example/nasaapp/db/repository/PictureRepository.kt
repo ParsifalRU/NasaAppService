@@ -2,6 +2,7 @@ package com.example.nasaapp.db.repository
 
 import com.example.nasaapp.db.dao.PictureOfTheDayDB
 import com.example.nasaapp.db.model.PictureOfTheDay
+import io.reactivex.rxjava3.core.Flowable
 
 class PictureRepository(private val pictureDao: PictureOfTheDayDB) {
 
@@ -17,8 +18,8 @@ class PictureRepository(private val pictureDao: PictureOfTheDayDB) {
         pictureDao.deletePicture(picture)
     }
 
-    fun deleteAllPictures(){
-        pictureDao.deleteAllPictures()
+    fun deleteAllPictures(): Flowable<List<PictureOfTheDay>> {
+        return pictureDao.deleteAllPictures()
     }
 
     fun getAllPictures(): List<PictureOfTheDay>{

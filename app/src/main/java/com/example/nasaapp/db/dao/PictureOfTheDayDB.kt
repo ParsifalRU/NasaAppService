@@ -2,6 +2,7 @@ package com.example.nasaapp.db.dao
 
 import androidx.room.*
 import com.example.nasaapp.db.model.PictureOfTheDay
+import io.reactivex.rxjava3.core.Flowable
 
 
 @Dao
@@ -17,7 +18,7 @@ interface PictureOfTheDayDB {
     fun deletePicture(picture: PictureOfTheDay)
 
     @Query("DELETE FROM $TABLE_NAME")
-    fun deleteAllPictures()
+    fun deleteAllPictures(): Flowable<List<PictureOfTheDay>>
 
     @Query("SELECT * FROM $TABLE_NAME")
     fun getAllPictures(): List<PictureOfTheDay>

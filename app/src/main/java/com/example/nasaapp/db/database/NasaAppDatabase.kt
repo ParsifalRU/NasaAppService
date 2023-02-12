@@ -7,7 +7,6 @@ import androidx.room.RoomDatabase
 import com.example.nasaapp.db.dao.FavoritePhotoDB
 import com.example.nasaapp.db.dao.MarsPhotoDB
 import com.example.nasaapp.db.dao.PictureOfTheDayDB
-import com.example.nasaapp.db.model.PictureOfTheDay
 
 
 @Database(
@@ -19,7 +18,7 @@ abstract class NasaAppDatabase : RoomDatabase() {
 
     abstract fun marsDao(): MarsPhotoDB
     abstract fun favouriteDao(): FavoritePhotoDB
-    abstract fun pictureDao(): PictureOfTheDay
+    abstract fun pictureDao(): PictureOfTheDayDB
 
     companion object {
         @Volatile
