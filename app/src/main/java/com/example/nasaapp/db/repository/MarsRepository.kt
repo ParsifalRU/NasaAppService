@@ -6,27 +6,27 @@ import io.reactivex.rxjava3.core.Flowable
 
 class MarsRepository(private val marsDao: MarsPhotoDB) {
 
-    fun insertPhoto(marsPhoto: MarsPhoto):Flowable<MarsPhotoDB>{
+    fun insertPhoto(marsPhoto: MarsPhoto):Flowable<MarsPhoto>{
         return marsDao.insertPhoto(marsPhoto)
     }
 
-    fun insertPhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhotoDB>>{
+    fun insertPhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhoto>>{
         return marsDao.insertPhotos(marsPhotos)
     }
 
-    fun updatePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhotoDB>{
+    fun updatePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhoto>{
         return marsDao.updatePhoto(marsPhoto)
     }
 
-    fun updatePhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhotoDB>>{
+    fun updatePhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhoto>>{
         return marsDao.updatePhotos(marsPhotos)
     }
 
-    fun deletePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhotoDB>{
+    fun deletePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhoto>{
         return marsDao.deletePhoto(marsPhoto)
     }
 
-    fun deleteAllPhotos():Flowable<List<MarsPhotoDB>>{
+    fun deleteAllPhotos():Flowable<List<MarsPhoto>>{
         return marsDao.deleteAllPhotos()
     }
 

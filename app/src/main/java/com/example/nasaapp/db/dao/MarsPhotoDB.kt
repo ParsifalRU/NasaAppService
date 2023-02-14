@@ -8,22 +8,22 @@ import io.reactivex.rxjava3.core.Flowable
 interface MarsPhotoDB {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPhoto(marsPhotoDB: MarsPhoto):Flowable<MarsPhotoDB>
+    fun insertPhoto(marsPhotoDB: MarsPhoto):Flowable<MarsPhoto>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPhotos(marsPhotosDB: List<MarsPhoto>):Flowable<List<MarsPhotoDB>>
+    fun insertPhotos(marsPhotosDB: List<MarsPhoto>):Flowable<List<MarsPhoto>>
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updatePhoto(marsPhotoDB: MarsPhoto):Flowable<MarsPhotoDB>
+    fun updatePhoto(marsPhotoDB: MarsPhoto):Flowable<MarsPhoto>
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updatePhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhotoDB>>
+    fun updatePhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhoto>>
 
     @Delete
-    fun deletePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhotoDB>
+    fun deletePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhoto>
 
     @Query("DELETE FROM $TABLE_NAME")
-    fun deleteAllPhotos():Flowable<List<MarsPhotoDB>>
+    fun deleteAllPhotos():Flowable<List<MarsPhoto>>
 
     @Query("SELECT * FROM $TABLE_NAME")
     fun getAllPhotos(): Flowable<List<MarsPhoto>>

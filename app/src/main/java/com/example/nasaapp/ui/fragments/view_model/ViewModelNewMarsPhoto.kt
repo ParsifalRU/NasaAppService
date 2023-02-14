@@ -129,11 +129,4 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
         compositeDisposable.clear()
         super.onCleared()
     }
-
-
-
-
-
-
-
 }
