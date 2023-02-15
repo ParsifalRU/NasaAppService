@@ -2,31 +2,32 @@ package com.example.nasaapp.db.repository
 
 import com.example.nasaapp.db.dao.MarsPhotoDB
 import com.example.nasaapp.db.model.MarsPhoto
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
 class MarsRepository(private val marsDao: MarsPhotoDB) {
 
-    fun insertPhoto(marsPhoto: MarsPhoto):Flowable<MarsPhoto>{
+    fun insertPhoto(marsPhoto: MarsPhoto): Completable {
         return marsDao.insertPhoto(marsPhoto)
     }
 
-    fun insertPhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhoto>>{
+    fun insertPhotos(marsPhotos: List<MarsPhoto>): Completable {
         return marsDao.insertPhotos(marsPhotos)
     }
 
-    fun updatePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhoto>{
+    fun updatePhoto(marsPhoto: MarsPhoto): Completable {
         return marsDao.updatePhoto(marsPhoto)
     }
 
-    fun updatePhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhoto>>{
+    fun updatePhotos(marsPhotos: List<MarsPhoto>): Completable {
         return marsDao.updatePhotos(marsPhotos)
     }
 
-    fun deletePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhoto>{
+    fun deletePhoto(marsPhoto: MarsPhoto): Completable {
         return marsDao.deletePhoto(marsPhoto)
     }
 
-    fun deleteAllPhotos():Flowable<List<MarsPhoto>>{
+    fun deleteAllPhotos(): Completable {
         return marsDao.deleteAllPhotos()
     }
 

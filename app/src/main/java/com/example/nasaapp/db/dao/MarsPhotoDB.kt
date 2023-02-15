@@ -2,28 +2,29 @@ package com.example.nasaapp.db.dao
 
 import androidx.room.*
 import com.example.nasaapp.db.model.MarsPhoto
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
 @Dao
 interface MarsPhotoDB {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPhoto(marsPhotoDB: MarsPhoto):Flowable<MarsPhoto>
+    fun insertPhoto(marsPhotoDB: MarsPhoto):Completable
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPhotos(marsPhotosDB: List<MarsPhoto>):Flowable<List<MarsPhoto>>
+    fun insertPhotos(marsPhotosDB: List<MarsPhoto>):Completable
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updatePhoto(marsPhotoDB: MarsPhoto):Flowable<MarsPhoto>
+    fun updatePhoto(marsPhotoDB: MarsPhoto):Completable
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updatePhotos(marsPhotos: List<MarsPhoto>):Flowable<List<MarsPhoto>>
+    fun updatePhotos(marsPhotos: List<MarsPhoto>):Completable
 
     @Delete
-    fun deletePhoto(marsPhoto: MarsPhoto):Flowable<MarsPhoto>
+    fun deletePhoto(marsPhoto: MarsPhoto):Completable
 
     @Query("DELETE FROM $TABLE_NAME")
-    fun deleteAllPhotos():Flowable<List<MarsPhoto>>
+    fun deleteAllPhotos():Completable
 
     @Query("SELECT * FROM $TABLE_NAME")
     fun getAllPhotos(): Flowable<List<MarsPhoto>>

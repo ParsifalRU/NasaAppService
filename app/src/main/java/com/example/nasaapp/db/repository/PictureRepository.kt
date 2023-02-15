@@ -2,23 +2,24 @@ package com.example.nasaapp.db.repository
 
 import com.example.nasaapp.db.dao.PictureOfTheDayDB
 import com.example.nasaapp.db.model.PictureOfTheDay
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
 class PictureRepository(private val pictureDao: PictureOfTheDayDB) {
 
-    fun insertPicture(picture: PictureOfTheDay):Flowable<PictureOfTheDay>{
+    fun insertPicture(picture: PictureOfTheDay): Completable {
         return pictureDao.insertPicture(picture)
     }
 
-    fun insertPictures(pictures: List<PictureOfTheDay>):Flowable<List<PictureOfTheDay>>{
+    fun insertPictures(pictures: List<PictureOfTheDay>): Completable {
         return pictureDao.insertPictures(pictures)
     }
 
-    fun deletePicture(picture: PictureOfTheDay):Flowable<PictureOfTheDay>{
+    fun deletePicture(picture: PictureOfTheDay): Completable {
         return pictureDao.deletePicture(picture)
     }
 
-    fun deleteAllPictures(): Flowable<List<PictureOfTheDay>> {
+    fun deleteAllPictures(): Completable {
         return pictureDao.deleteAllPictures()
     }
 

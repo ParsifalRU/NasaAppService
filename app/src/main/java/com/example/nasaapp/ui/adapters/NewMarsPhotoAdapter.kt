@@ -1,7 +1,6 @@
 package com.example.nasaapp.ui.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,12 +26,10 @@ class NewMarsPhotoAdapter(private val context: Context, private val url: ModelOp
         }
 
         override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
-            Log.d("LOGTAG","onBindViewHolder $position" )
+
             if (url!=null){
                 setImage(context, url.photos[position].img_src.toString(), holder.imageView)
-                Log.d("LOGTAG", url.photos[position].img_src.toString())
             }else  setImage(context, "https://apod.nasa.gov/apod/image/2301/C2022E3ZTF_2023_01_23_054036PST_DEBartlett1024.jpg", holder.imageView)
-
 
         }
 

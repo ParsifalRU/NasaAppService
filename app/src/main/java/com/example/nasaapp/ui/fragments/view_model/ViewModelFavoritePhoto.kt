@@ -8,6 +8,8 @@ import com.example.nasaapp.db.model.FavoritePhoto
 import com.example.nasaapp.db.repository.FavoriteRepository
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.observers.DisposableCompletableObserver
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 class ViewModelFavoritePhoto(application: Application): AndroidViewModel(application) {
 
@@ -23,7 +25,7 @@ class ViewModelFavoritePhoto(application: Application): AndroidViewModel(applica
         compositeDisposable.add(
             repository.insertPhoto(photo)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
+                .subscribe() {
                     Log.d("LOGTAG", "insert photo ($photo)") }
         )
     }
@@ -31,27 +33,55 @@ class ViewModelFavoritePhoto(application: Application): AndroidViewModel(applica
     fun insertPhotos(photos: List<FavoritePhoto>) {
         compositeDisposable.add(
             repository.insertPhotos(photos)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Log.d("LOGTAG", "insert photos ($photos)") }
+                .subscribeWith(object: DisposableCompletableObserver(){
+                    override fun onComplete() {
+                        Log.d("LOGTAG", "insert onComplete ")
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("LOGTAG", "insert onError $e")
+                    }
+
+                })
+
         )
     }
 
     fun deletePhoto(photo: FavoritePhoto) {
         compositeDisposable.add(
             repository.deletePhoto(photo)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Log.d("LOGTAG", "delete photo ($photo)") }
+                .subscribeWith(object: DisposableCompletableObserver(){
+                    override fun onComplete() {
+                        Log.d("LOGTAG", "delete onComplete $photo ")
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("LOGTAG", "delete onError $e")
+                    }
+
+                })
         )
     }
 
     fun deleteAll(){
         compositeDisposable.add(
             repository.deleteAll()
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Log.d("LOGTAG", "delete all photo") }
+                .subscribeWith(object: DisposableCompletableObserver(){
+                    override fun onComplete() {
+                        Log.d("LOGTAG", "delete all onComplete ")
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Log.d("LOGTAG", "delete all onError $e")
+                    }
+
+                })
         )
     }
 
@@ -59,8 +89,8 @@ class ViewModelFavoritePhoto(application: Application): AndroidViewModel(applica
         compositeDisposable.add(
             repository.getAllPhotos()
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Log.d("LOGTAG", "get all photos ") }
+                .subscribe {data ->
+                    Log.d("LOGTAG", "get all photos ($data)") }
         )
     }
 
@@ -68,8 +98,8 @@ class ViewModelFavoritePhoto(application: Application): AndroidViewModel(applica
         compositeDisposable.add(
             repository.getPhoto(id)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Log.d("LOGTAG", "get photo ($id)") }
+                .subscribe {data ->
+                    Log.d("LOGTAG", "get photo ($data)") }
         )
     }
 
@@ -77,8 +107,8 @@ class ViewModelFavoritePhoto(application: Application): AndroidViewModel(applica
         compositeDisposable.add(
             repository.isPhotoExists(id)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    Log.d("LOGTAG", "is Photo exists ($id)") }
+                .subscribe {data ->
+                    Log.d("LOGTAG", "is Photo exists ($data)") }
         )
     }
 
@@ -86,5 +116,5 @@ class ViewModelFavoritePhoto(application: Application): AndroidViewModel(applica
         compositeDisposable.clear()
         super.onCleared()
     }
-
 }
+

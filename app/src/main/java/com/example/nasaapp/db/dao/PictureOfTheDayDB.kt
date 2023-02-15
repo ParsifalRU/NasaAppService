@@ -2,6 +2,7 @@ package com.example.nasaapp.db.dao
 
 import androidx.room.*
 import com.example.nasaapp.db.model.PictureOfTheDay
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
 
@@ -9,16 +10,16 @@ import io.reactivex.rxjava3.core.Flowable
 interface PictureOfTheDayDB {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPicture(picture: PictureOfTheDay):Flowable<PictureOfTheDay>
+    fun insertPicture(picture: PictureOfTheDay):Completable
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertPictures(pictures: List<PictureOfTheDay>): Flowable<List<PictureOfTheDay>>
+    fun insertPictures(pictures: List<PictureOfTheDay>):Completable
 
     @Delete
-    fun deletePicture(picture: PictureOfTheDay):Flowable<PictureOfTheDay>
+    fun deletePicture(picture: PictureOfTheDay):Completable
 
     @Query("DELETE FROM $TABLE_NAME")
-    fun deleteAllPictures(): Flowable<List<PictureOfTheDay>>
+    fun deleteAllPictures():Completable
 
     @Query("SELECT * FROM $TABLE_NAME")
     fun getAllPictures(): Flowable<List<PictureOfTheDay>>
@@ -30,7 +31,7 @@ interface PictureOfTheDayDB {
     fun isPictureExists(explanation: String): Flowable<Boolean>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE id = :id")
-    fun getPictureOfDay(id: Int): Flowable<PictureOfTheDay>
+    fun getPictureOfDay(id: Int):Flowable<PictureOfTheDay>
 
     companion object {
         private const val TABLE_NAME = "picture_of_the_day_table"
