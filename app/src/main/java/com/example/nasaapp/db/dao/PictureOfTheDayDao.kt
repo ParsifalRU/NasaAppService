@@ -36,4 +36,5 @@ interface PictureOfTheDayDao {
     companion object {
         private const val TABLE_NAME = "picture_of_the_day_table"
     }
+
 }
