@@ -16,6 +16,7 @@ import com.example.nasaapp.db.model.PictureOfTheDay
     entities = [MarsPhoto::class, FavoritePhoto::class, PictureOfTheDay::class ],
     version = 1,
     exportSchema = false
+
 )
 abstract class NasaAppDatabase : RoomDatabase() {
 
