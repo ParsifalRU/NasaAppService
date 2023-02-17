@@ -11,12 +11,10 @@ import com.example.nasaapp.db.model.FavoritePhoto
 import com.example.nasaapp.db.model.MarsPhoto
 import com.example.nasaapp.db.model.PictureOfTheDay
 
-
 @Database(
     entities = [MarsPhoto::class, FavoritePhoto::class, PictureOfTheDay::class ],
     version = 1,
     exportSchema = false
-
 )
 abstract class NasaAppDatabase : RoomDatabase() {
 
