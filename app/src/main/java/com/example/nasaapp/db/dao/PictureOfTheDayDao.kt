@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.core.Flowable
 
 
 @Dao
-interface PictureOfTheDayDB {
+interface PictureOfTheDayDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPicture(picture: PictureOfTheDay):Completable

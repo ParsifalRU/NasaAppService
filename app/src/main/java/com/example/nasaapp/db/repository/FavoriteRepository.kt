@@ -1,11 +1,11 @@
 package com.example.nasaapp.db.repository
 
-import com.example.nasaapp.db.dao.FavoritePhotoDB
+import com.example.nasaapp.db.dao.FavoritePhotoDao
 import com.example.nasaapp.db.model.FavoritePhoto
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
-class FavoriteRepository(private val favoriteDao: FavoritePhotoDB) {
+class FavoriteRepository(private val favoriteDao: FavoritePhotoDao) {
 
     fun insertPhoto(photo: FavoritePhoto): Completable {
         return favoriteDao.insertPhoto(photo)

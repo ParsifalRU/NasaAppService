@@ -1,11 +1,11 @@
 package com.example.nasaapp.db.repository
 
-import com.example.nasaapp.db.dao.PictureOfTheDayDB
+import com.example.nasaapp.db.dao.PictureOfTheDayDao
 import com.example.nasaapp.db.model.PictureOfTheDay
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
-class PictureRepository(private val pictureDao: PictureOfTheDayDB) {
+class PictureRepository(private val pictureDao: PictureOfTheDayDao) {
 
     fun insertPicture(picture: PictureOfTheDay): Completable {
         return pictureDao.insertPicture(picture)

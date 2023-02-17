@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
 @Dao
-interface FavoritePhotoDB {
+interface FavoritePhotoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPhoto(photo: FavoritePhoto): Completable

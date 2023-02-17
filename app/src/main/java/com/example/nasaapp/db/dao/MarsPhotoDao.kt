@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
 @Dao
-interface MarsPhotoDB {
+interface MarsPhotoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPhoto(marsPhotoDB: MarsPhoto):Completable
