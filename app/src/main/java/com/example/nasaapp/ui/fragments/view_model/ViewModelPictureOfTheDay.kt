@@ -21,7 +21,7 @@ class ViewModelPictureOfTheDay(application: Application) : AndroidViewModel(appl
 
     init {
         val pictureDao = NasaAppDatabase.getDatabase(application).pictureDao()
-        val repository = PictureRepository(pictureDao)
+        repository = PictureRepository(pictureDao)
     }
 
     var livedataPictureOfTheDay = MutableLiveData<List<ModelPictOfTheDay>>()

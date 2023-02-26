@@ -24,6 +24,7 @@ private const val API_KEY = "TZIMZYEFae7yfl8BNaoYsogFD8e88WTx0dSaWvxi"
     val dateFormat: DateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
     val dateText: String = dateFormat.format(currentDate)
 
+
 interface NasaPhotoApi {
 
     @GET(PICTURE_OF_DAY)
@@ -41,14 +42,14 @@ interface NasaPhotoApi {
     @GET(CURIOSITY_ROVER)
     fun getCuriosityMarsPhotosFromEarthDate(
 
-/*        @Query("page")
-        page: Int = 1,*/
+        @Query("page")
+        page: Int = 1,
 
         @Query("sol")
         sol: Int = 1000,
 
         @Query("earth_date")
-        earthDate: String = /*"2015-6-3"*/ dateText,
+        earthDate: String = dateText,
 
 /*
         @Query("camera")

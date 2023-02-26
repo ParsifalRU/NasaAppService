@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.nasaapp.databinding.MarsPhotoNewBinding
+import com.example.nasaapp.db.model.MarsPhoto
 import com.example.nasaapp.network.api.NasaApp
 import com.example.nasaapp.network.models.ModelOpportunity
 import com.example.nasaapp.ui.adapters.NewMarsPhotoAdapter
@@ -18,6 +19,11 @@ class FragmentNewMarsPhoto : Fragment() {
     private lateinit var adapter: NewMarsPhotoAdapter
     lateinit var binding: MarsPhotoNewBinding
     lateinit var viewModel: ViewModelNewMarsPhoto
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +36,7 @@ class FragmentNewMarsPhoto : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         takeResponse()
+        setButton()
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -57,8 +64,9 @@ class FragmentNewMarsPhoto : Fragment() {
 
     }
 
-    fun setButton(){
+    private fun setButton(){
         binding.loadBtn.setOnClickListener {
+
 
         }
     }

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentPictureOfTheDayBinding
+import com.example.nasaapp.db.model.PictureOfTheDay
 import com.example.nasaapp.network.api.NasaApp
 import com.example.nasaapp.ui.fragments.view_model.ViewModelPictureOfTheDay
 
@@ -34,7 +35,6 @@ class FragmentPictureOfTheDay() : Fragment() {
 
 
     private fun downloadImage(url: String?){
-
             Glide
                 .with(this)
                 .load(url)
@@ -42,13 +42,13 @@ class FragmentPictureOfTheDay() : Fragment() {
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(binding.imageView)
         Log.d("LOGTAG","FragmentPictureOfTheDay $url")
-
     }
 
     private fun takeResponse(){
         viewModel = ViewModelProvider(this)[ViewModelPictureOfTheDay::class.java]
         viewModel.getMarsPhotos((activity?.application as NasaApp).nasaPhotoApi)
-        viewModel.livedataPictureOfTheDay.observe(viewLifecycleOwner){vmData -> downloadImage(vmData[0].url)}
+        viewModel.livedataPictureOfTheDay.observe(viewLifecycleOwner){vmData ->
+            downloadImage(vmData[0].url)
+        }
     }
-
 }

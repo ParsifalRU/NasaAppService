@@ -2,13 +2,17 @@ package com.example.nasaapp.network.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.room.Entity
+import kotlinx.android.parcel.Parcelize
 
+
+/*@Parcelize*/
 
 data class ModelOpportunity(
     val photos: List<PhotoVO>
-    ){
+    ) /*: Parcelable {
 
-}
+}*/
 
 
 data class PhotoVO(
@@ -20,7 +24,7 @@ data class PhotoVO(
     val earth_date: String?,
     val rover: RoverVO?
 
-) /*{
+)/*: Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readValue(Int::class.java.classLoader) as? Int,
@@ -44,15 +48,17 @@ data class PhotoVO(
         return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<ModelOpportunity> {
-        override fun createFromParcel(parcel: Parcel): ModelOpportunity {
-            return ModelOpportunity(parcel)
+    companion object CREATOR : Parcelable.Creator<PhotoVO> {
+        override fun createFromParcel(parcel: Parcel): PhotoVO {
+            return PhotoVO(parcel)
         }
 
-        override fun newArray(size: Int): Array<ModelOpportunity?> {
+        override fun newArray(size: Int): Array<PhotoVO?> {
             return arrayOfNulls(size)
         }
     }
+
+
 }*/
 
 
@@ -62,7 +68,7 @@ data class RoverVO(
     val landing_date: String? ,
     val launch_date: String? ,
     val status: String?
-) /*{
+) /*:Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString(),
@@ -93,13 +99,13 @@ data class RoverVO(
             return arrayOfNulls(size)
         }
     }
-}*/
-
+}
+*/
 data class CameraVO(
     val id: Int?,
     val name: String? ,
     val full_name: String?
-) /*{
+)/*: Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString(),

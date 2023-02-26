@@ -3,6 +3,8 @@ package com.example.nasaapp.db.model
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.nasaapp.network.models.ModelOpportunity
+import com.example.nasaapp.network.models.PhotoVO
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -18,4 +20,4 @@ data class MarsPhoto(
     val landing_date: String? ,
     val launch_date: String? ,
     val status: String?
-): Parcelable
+) : Parcelable

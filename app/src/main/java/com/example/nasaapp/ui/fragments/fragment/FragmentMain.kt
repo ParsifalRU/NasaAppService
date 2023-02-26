@@ -9,7 +9,7 @@ import com.example.nasaapp.databinding.FragmentMainBinding
 
 
 class FragmentMain : Fragment() {
-    lateinit var binding: FragmentMainBinding
+    private lateinit var binding: FragmentMainBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

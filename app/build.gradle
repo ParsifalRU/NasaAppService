@@ -33,6 +33,7 @@ android {
     buildFeatures{
         viewBinding true
     }
+    namespace 'com.example.nasaapp'
 
 }
 apply plugin: 'kotlin-kapt'

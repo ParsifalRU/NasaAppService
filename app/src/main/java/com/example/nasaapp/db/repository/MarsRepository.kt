@@ -2,6 +2,7 @@ package com.example.nasaapp.db.repository
 
 import com.example.nasaapp.db.dao.MarsPhotoDao
 import com.example.nasaapp.db.model.MarsPhoto
+import com.example.nasaapp.network.models.ModelOpportunity
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Flowable
 
