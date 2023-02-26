@@ -48,6 +48,7 @@ class ViewModelPictureOfTheDay(application: Application) : AndroidViewModel(appl
     fun insertPicture(picture: PictureOfTheDay){
         compositeDisposable.add(
             repository.insertPicture(picture)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "insert Picture Complete ($picture)") }
@@ -75,6 +76,7 @@ class ViewModelPictureOfTheDay(application: Application) : AndroidViewModel(appl
     fun deleteAllPictures(){
         compositeDisposable.add(
             repository.deleteAllPictures()
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "delete All Pictures Complete") }
@@ -86,7 +88,8 @@ class ViewModelPictureOfTheDay(application: Application) : AndroidViewModel(appl
             repository.getAllPictures()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    Log.d("LOGTAG", "GET All Pictures Complete") }
+                    Log.d("LOGTAG", "GET All Pictures Complete \n $it")
+                }
         )
     }
 

@@ -43,7 +43,7 @@ interface NasaPhotoApi {
     fun getCuriosityMarsPhotosFromEarthDate(
 
         @Query("page")
-        page: Int = 1,
+        page: Int,
 
         @Query("sol")
         sol: Int = 1000,

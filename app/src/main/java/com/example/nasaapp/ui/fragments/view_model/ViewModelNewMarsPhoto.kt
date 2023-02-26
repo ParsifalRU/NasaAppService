@@ -18,6 +18,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
 
     private val compositeDisposable = CompositeDisposable()
     lateinit var repository: MarsRepository
+    var page = 1
 
     init {
         val marsDao = NasaAppDatabase.getDatabase(application).marsDao()
@@ -27,9 +28,8 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
     var liveDataNewMarsPhoto = MutableLiveData<ModelOpportunity>()
 
     fun getCuriosityMarsPhotosFromEarthDate(nasaPhotoApi: NasaPhotoApi) {
-
         Log.d("LOGTAG", "getMarsPhoto")
-        compositeDisposable.add(nasaPhotoApi.getCuriosityMarsPhotosFromEarthDate()
+        compositeDisposable.add(nasaPhotoApi.getCuriosityMarsPhotosFromEarthDate(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeWith(object: DisposableSingleObserver<ModelOpportunity>(){
@@ -42,6 +42,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
                 }
             })
         )
+        page++
     }
 
     fun insertPhoto(marsPhoto: MarsPhoto){

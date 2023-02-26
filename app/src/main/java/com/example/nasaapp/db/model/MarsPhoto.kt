@@ -1,6 +1,7 @@
 package com.example.nasaapp.db.model
 
 import android.os.Parcelable
+import android.view.Display.Mode
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.nasaapp.network.models.ModelOpportunity
@@ -17,7 +18,7 @@ data class MarsPhoto(
     val img_src : String?,
     val earth_date: String?,
     val name: String?,
-    val landing_date: String? ,
-    val launch_date: String? ,
+    val landing_date: String?,
+    val launch_date: String?,
     val status: String?
 ) : Parcelable

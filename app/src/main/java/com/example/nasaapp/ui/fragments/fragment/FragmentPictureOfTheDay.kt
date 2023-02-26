@@ -11,6 +11,8 @@ import com.example.nasaapp.R
 import com.example.nasaapp.databinding.FragmentPictureOfTheDayBinding
 import com.example.nasaapp.db.model.PictureOfTheDay
 import com.example.nasaapp.network.api.NasaApp
+import com.example.nasaapp.network.models.ModelOpportunity
+import com.example.nasaapp.network.models.ModelPictOfTheDay
 import com.example.nasaapp.ui.fragments.view_model.ViewModelPictureOfTheDay
 
 
@@ -49,6 +51,22 @@ class FragmentPictureOfTheDay() : Fragment() {
         viewModel.getMarsPhotos((activity?.application as NasaApp).nasaPhotoApi)
         viewModel.livedataPictureOfTheDay.observe(viewLifecycleOwner){vmData ->
             downloadImage(vmData[0].url)
+            viewModel.insertPicture(transformationModel(vmData))
+            viewModel.getAllPictures()
         }
+    }
+
+    private fun transformationModel(model1: List<ModelPictOfTheDay>): PictureOfTheDay{
+        return PictureOfTheDay(
+            1,
+            model1[0].date,
+            model1[0].explanation,
+            model1[0].url,
+            model1[0].media_type,
+            model1[0].hdurl,
+            model1[0].image,
+            model1[0].service_version,
+            model1[0].title
+        )
     }
 }

@@ -3,6 +3,7 @@ package com.example.nasaapp.network.models
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.Entity
+import com.example.nasaapp.db.model.MarsPhoto
 import kotlinx.android.parcel.Parcelize
 
 

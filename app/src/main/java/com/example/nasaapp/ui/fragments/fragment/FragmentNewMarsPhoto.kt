@@ -66,7 +66,8 @@ class FragmentNewMarsPhoto : Fragment() {
 
     private fun setButton(){
         binding.loadBtn.setOnClickListener {
-
+            viewModel = ViewModelProvider(this)[ViewModelNewMarsPhoto::class.java]
+            viewModel.getCuriosityMarsPhotosFromEarthDate((activity?.application as NasaApp).nasaPhotoApi)
 
         }
     }
