@@ -18,7 +18,7 @@ class ViewModelFavoritePhoto(application: Application): AndroidViewModel(applica
 
     init {
         val favoriteDao = NasaAppDatabase.getDatabase(application).favouriteDao()
-        val repository = FavoriteRepository(favoriteDao)
+        repository = FavoriteRepository(favoriteDao)
     }
 
     fun insertPhoto(photo: FavoritePhoto) {

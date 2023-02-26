@@ -17,13 +17,8 @@ import com.example.nasaapp.ui.fragments.view_model.ViewModelNewMarsPhoto
 
 class FragmentNewMarsPhoto : Fragment() {
     private lateinit var adapter: NewMarsPhotoAdapter
-    lateinit var binding: MarsPhotoNewBinding
-    lateinit var viewModel: ViewModelNewMarsPhoto
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private lateinit var binding: MarsPhotoNewBinding
+    private lateinit var viewModel: ViewModelNewMarsPhoto
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +30,7 @@ class FragmentNewMarsPhoto : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        takeViewModel()
         takeResponse()
         setButton()
         super.onViewCreated(view, savedInstanceState)
@@ -55,21 +51,21 @@ class FragmentNewMarsPhoto : Fragment() {
     }
 
     private fun takeResponse(){
-        viewModel = ViewModelProvider(this)[ViewModelNewMarsPhoto::class.java]
-        viewModel.getCuriosityMarsPhotosFromEarthDate((activity?.application as NasaApp).nasaPhotoApi)
+        takeViewModel()
         viewModel.liveDataNewMarsPhoto.observe(viewLifecycleOwner){
             vmData -> setAdapter(vmData)
             binding.vertRecyclerView.adapter = adapter
         }
-
     }
 
     private fun setButton(){
         binding.loadBtn.setOnClickListener {
-            viewModel = ViewModelProvider(this)[ViewModelNewMarsPhoto::class.java]
-            viewModel.getCuriosityMarsPhotosFromEarthDate((activity?.application as NasaApp).nasaPhotoApi)
-
+            takeViewModel()
         }
     }
 
+    private fun takeViewModel(){
+        viewModel = ViewModelProvider(this)[ViewModelNewMarsPhoto::class.java]
+        viewModel.getCuriosityMarsPhotosFromEarthDate((activity?.application as NasaApp).nasaPhotoApi)
+    }
 }

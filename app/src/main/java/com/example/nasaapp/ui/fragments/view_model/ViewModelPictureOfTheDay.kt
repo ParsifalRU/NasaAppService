@@ -17,7 +17,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class ViewModelPictureOfTheDay(application: Application) : AndroidViewModel(application) {
 
     private val compositeDisposable = CompositeDisposable()
-    lateinit var repository: PictureRepository
+    var repository: PictureRepository
 
     init {
         val pictureDao = NasaAppDatabase.getDatabase(application).pictureDao()
@@ -58,6 +58,7 @@ class ViewModelPictureOfTheDay(application: Application) : AndroidViewModel(appl
     fun insertPictures(pictures: List<PictureOfTheDay>){
         compositeDisposable.add(
             repository.insertPictures(pictures)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "insert Pictures Complete ($pictures)") }
@@ -67,6 +68,7 @@ class ViewModelPictureOfTheDay(application: Application) : AndroidViewModel(appl
     fun deletePicture(picture: PictureOfTheDay){
         compositeDisposable.add(
             repository.deletePicture(picture)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "delete Picture Complete ($picture)") }
@@ -120,11 +122,8 @@ class ViewModelPictureOfTheDay(application: Application) : AndroidViewModel(appl
         )
     }
 
-
-
     override fun onCleared() {
         compositeDisposable.clear()
         super.onCleared()
     }
-
 }

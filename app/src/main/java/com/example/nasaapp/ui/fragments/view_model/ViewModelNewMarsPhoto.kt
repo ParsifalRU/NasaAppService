@@ -17,12 +17,12 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(application) {
 
     private val compositeDisposable = CompositeDisposable()
-    lateinit var repository: MarsRepository
+    var repository: MarsRepository
     var page = 1
 
     init {
         val marsDao = NasaAppDatabase.getDatabase(application).marsDao()
-        val repository = MarsRepository(marsDao)
+        repository = MarsRepository(marsDao)
     }
 
     var liveDataNewMarsPhoto = MutableLiveData<ModelOpportunity>()
@@ -48,6 +48,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
     fun insertPhoto(marsPhoto: MarsPhoto){
         compositeDisposable.add(
             repository.insertPhoto(marsPhoto)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "insert photo ($marsPhoto)") }
@@ -57,6 +58,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
     fun insertPhotos(marsPhotos: List<MarsPhoto>){
         compositeDisposable.add(
             repository.insertPhotos(marsPhotos)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "insert photos ($marsPhotos)") }
@@ -66,6 +68,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
     fun updatePhoto(marsPhoto: MarsPhoto){
         compositeDisposable.add(
             repository.updatePhoto(marsPhoto)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "update photo ($marsPhoto)") }
@@ -75,6 +78,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
     fun updatePhotos(marsPhotos: List<MarsPhoto>){
         compositeDisposable.add(
             repository.updatePhotos(marsPhotos)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "update photos ($marsPhotos)") }
@@ -84,6 +88,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
     fun deletePhoto(marsPhoto: MarsPhoto){
         compositeDisposable.add(
             repository.deletePhoto(marsPhoto)
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "delete photo ($marsPhoto)") }
@@ -93,6 +98,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
     fun deleteAllPhotos(){
         compositeDisposable.add(
             repository.deleteAllPhotos()
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     Log.d("LOGTAG", "Delete All Pictures") }
@@ -104,7 +110,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
             repository.getAllPhotos()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    Log.d("LOGTAG", "get all photos") }
+                    Log.d("LOGTAG", "get all photos $it") }
         )
     }
 
@@ -113,7 +119,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
             repository.getPhoto(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    Log.d("LOGTAG", "get photo ($id)") }
+                    Log.d("LOGTAG", "get photo ($it)") }
         )
     }
 
@@ -122,7 +128,7 @@ class ViewModelNewMarsPhoto(application: Application): AndroidViewModel(applicat
             repository.isPhotoExists(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    Log.d("LOGTAG", "is Photo exists ($id)") }
+                    Log.d("LOGTAG", "is Photo exists ($it)") }
         )
     }
 

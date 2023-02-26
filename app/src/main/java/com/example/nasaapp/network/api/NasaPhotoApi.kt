@@ -79,6 +79,7 @@ interface NasaPhotoApi {
 
         @Query("api_key")
         APIKey: String = API_KEY
+
     ): Single<ModelOpportunity>
 
     @GET(SPIRIT_ROVER)
